@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "DSH 提问草稿保全",
+  "version": "1.0.0",
+  "description": "把 DSH 提问卡片里未提交的作答存在本机；卡片消失后自动写进聊天输入框，发送后清除。",
+  "homepage_url": "https://127.0.0.1:3080",
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "DSH 提问草稿保全",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://127.0.0.1/*",
+        "http://localhost/*",
+        "http://dsh.finalrat.icu/*",
+        "https://dsh.finalrat.icu/*"
+      ],
+      "js": [
+        "qd-draft.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": false
+    }
+  ]
+}
